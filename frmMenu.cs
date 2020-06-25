@@ -33,5 +33,12 @@ namespace OrdemServico2020
             frmCli.MdiParent = this;
             frmCli.Show();
         }
+
+        private void abrirOrdemDeServiçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrdens frmOrd = new frmOrdens();
+            frmOrd.MdiParent = this;
+            frmOrd.Show();
+        }
     }
 }

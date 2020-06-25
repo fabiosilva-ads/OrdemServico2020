@@ -68,7 +68,7 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(151, 30);
             this.clientesToolStripMenuItem.Text = "&Clientes";
             this.clientesToolStripMenuItem.ToolTipText = "Cadastra novos clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
@@ -88,6 +88,7 @@
             this.abrirOrdemDeServiçoToolStripMenuItem.Name = "abrirOrdemDeServiçoToolStripMenuItem";
             this.abrirOrdemDeServiçoToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
             this.abrirOrdemDeServiçoToolStripMenuItem.Text = "&Abrir OS";
+            this.abrirOrdemDeServiçoToolStripMenuItem.Click += new System.EventHandler(this.abrirOrdemDeServiçoToolStripMenuItem_Click);
             // 
             // executarOrdemDeServiçoToolStripMenuItem
             // 
