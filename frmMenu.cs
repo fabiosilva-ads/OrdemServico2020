@@ -26,5 +26,12 @@ namespace OrdemServico2020
         {
             this.Dispose();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClientes frmCli = new frmClientes();
+            frmCli.MdiParent = this;
+            frmCli.Show();
+        }
     }
 }
