@@ -43,9 +43,9 @@ namespace OrdemServico2020.Camadas.DAL
             return lstClientes;
         }
 
-        public List<MODEL.Clientes> SelectById(int id)
+        public MODEL.Clientes SelectById(int id)
         {
-            List<MODEL.Clientes> lstClientes = new List<MODEL.Clientes>();
+            MODEL.Clientes cliente = new MODEL.Clientes();
             SqlConnection conexao = new SqlConnection(strCon);
             string sql = "SELECT * FROM Clientes WHERE idCli=@idCli";
             SqlCommand cmd = new SqlCommand(sql, conexao);
@@ -55,13 +55,11 @@ namespace OrdemServico2020.Camadas.DAL
                 conexao.Open();
                 SqlDataReader dados = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 while (dados.Read())
-                {
-                    MODEL.Clientes cliente = new MODEL.Clientes();
+                {                   
                     cliente.idCli = Convert.ToInt32(dados["idCli"].ToString());
                     cliente.nome = dados["nome"].ToString();
                     cliente.endereco = dados["endereco"].ToString();
-                    cliente.fone = dados["fone"].ToString();
-                    lstClientes.Add(cliente);
+                    cliente.fone = dados["fone"].ToString(); 
                 }
             }
             catch
@@ -72,7 +70,7 @@ namespace OrdemServico2020.Camadas.DAL
             {
                 conexao.Close();
             }
-            return lstClientes;
+            return cliente;
         }
 
         public List<MODEL.Clientes> SelectByNome(string nome)

@@ -32,6 +32,11 @@ namespace OrdemServico2020.Camadas.DAL
                     ordem.valor = Convert.ToSingle(dados["valor"].ToString());
                     ordem.situacao = dados["situacao"].ToString();
                     ordem.clienteID = Convert.ToInt32(dados["clienteID"].ToString());
+
+                    Camadas.DAL.Clientes dalCli = new Clientes();
+                    Camadas.MODEL.Clientes cliente = dalCli.SelectById(ordem.clienteID);
+                    ordem.nomeCli = cliente.nome;
+
                     lstOrdens.Add(ordem);
                 }
             }
@@ -45,8 +50,8 @@ namespace OrdemServico2020.Camadas.DAL
             }
             return lstOrdens;
         }
-
-        public List<MODEL.Ordens> SelectById(int id)
+        
+        /*public List<MODEL.Ordens> SelectById(int id)
         {
             List<MODEL.Ordens> lstOrdens = new List<MODEL.Ordens>();
             SqlConnection conexao = new SqlConnection(strCon);
@@ -142,7 +147,7 @@ namespace OrdemServico2020.Camadas.DAL
             }
         }
 
-        public void Update(MODEL.Ordens ordem)
+        /*public void Update(MODEL.Ordens ordem)
         {
             SqlConnection conexao = new SqlConnection(strCon);
             string sql = "UPDATE Ordens SET entrada=@entrada, equipamento=@equipamento, defeito=@defeito, valor=@valor, situacao=@situacao, clienteID=@clienteID WHERE idOrd=@idOrd";
@@ -188,6 +193,6 @@ namespace OrdemServico2020.Camadas.DAL
             {
                 conexao.Close();
             }
-        }
+        }*/
     }
 }

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,7 @@
     <Compile Include="Camadas\DAL\Clientes.cs" />
     <Compile Include="Camadas\DAL\Conexao.cs" />
     <Compile Include="Camadas\DAL\Ordens.cs" />
+    <Compile Include="Camadas\DAL\Servicos.cs" />
     <Compile Include="Camadas\MODEL\Clientes.cs" />
     <Compile Include="Camadas\MODEL\Ordens.cs" />
     <Compile Include="Camadas\MODEL\Servicos.cs" />

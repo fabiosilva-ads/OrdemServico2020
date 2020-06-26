@@ -15,5 +15,6 @@ namespace OrdemServico2020.Camadas.MODEL
         public float valor { get; set; }
         public string situacao { get; set; }
         public int clienteID { get; set; }
+        public string nomeCli { get; set; }
     }
 }
