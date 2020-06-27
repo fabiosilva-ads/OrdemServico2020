@@ -8,9 +8,7 @@ namespace OrdemServico2020.Camadas.MODEL
 {
     public class Servicos
     {
-        public int idSer { get; set; }
-        public string tecnico { get; set; }
-        public string execucao { get; set; }
+        public int idSer { get; set; }        
         public DateTime saida { get; set; }
         public int ordemID { get; set; }
     }

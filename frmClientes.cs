@@ -51,6 +51,8 @@ namespace OrdemServico2020
             Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
             dalCli.Insert(cliente);
 
+            limparControles();
+
             dgvClientes.DataSource = "";
             dgvClientes.DataSource = dalCli.Select();
         }
@@ -65,6 +67,8 @@ namespace OrdemServico2020
 
             Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
             dalCli.Update(cliente);
+
+            limparControles();
 
             dgvClientes.DataSource = "";
             dgvClientes.DataSource = dalCli.Select();
@@ -85,6 +89,8 @@ namespace OrdemServico2020
                 }                
             }
             else MessageBox.Show("Não há dados para remover!", "Remover", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            limparControles();
 
             dgvClientes.DataSource = "";
             dgvClientes.DataSource = dalCli.Select();

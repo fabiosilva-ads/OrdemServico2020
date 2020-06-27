@@ -196,7 +196,9 @@
             // frmClientes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(682, 460);
+            this.ControlBox = false;
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnLimpar);
@@ -213,6 +215,7 @@
             this.Controls.Add(this.dgvClientes);
             this.Location = new System.Drawing.Point(698, 498);
             this.MaximumSize = new System.Drawing.Size(698, 498);
+            this.MinimumSize = new System.Drawing.Size(698, 498);
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
