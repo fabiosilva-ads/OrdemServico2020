@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OrdemServico2020.Relatorios;
 
 namespace OrdemServico2020
 {
@@ -56,6 +57,11 @@ namespace OrdemServico2020
         {
             frmSobre frmSb = new frmSobre();
             frmSb.ShowDialog();
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Relatorios.RelClientes.relCliente();
         }
     }
 }
