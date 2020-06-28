@@ -94,6 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios\Funcoes.cs" />
     <Compile Include="Relatorios\RelClientes.cs" />
+    <Compile Include="Relatorios\RelOrdens.cs" />
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>

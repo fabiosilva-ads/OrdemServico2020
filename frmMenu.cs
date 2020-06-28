@@ -63,5 +63,10 @@ namespace OrdemServico2020
         {
             Relatorios.RelClientes.relCliente();
         }
+
+        private void ordemDeServiçoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Relatorios.RelOrdens.relOrdem();
+        }
     }
 }

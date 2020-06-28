@@ -49,41 +49,56 @@ namespace OrdemServico2020
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            Camadas.MODEL.Ordens ordem = new Camadas.MODEL.Ordens();
-            ordem.entrada = Convert.ToDateTime(dtpEntrada.Value);
-            ordem.equipamento = txtEquipamento.Text;
-            ordem.defeito = txtDefeito.Text;
-            ordem.valor = Convert.ToSingle(txtValor.Text);
-            ordem.situacao = Convert.ToInt32(txtSituacao.Text);
-            ordem.clienteID = Convert.ToInt32(txtIdCli.Text);
+            try
+            {
+                Camadas.MODEL.Ordens ordem = new Camadas.MODEL.Ordens();
+                ordem.entrada = Convert.ToDateTime(dtpEntrada.Value);
+                ordem.equipamento = txtEquipamento.Text;
+                ordem.defeito = txtDefeito.Text;
+                ordem.valor = Convert.ToSingle(txtValor.Text);                              
+                ordem.situacao = Convert.ToInt32(txtSituacao.Text);
+                ordem.clienteID = Convert.ToInt32(txtIdCli.Text);
 
-            Camadas.DAL.Ordens dalCli = new Camadas.DAL.Ordens();
-            dalCli.Insert(ordem);
+                Camadas.DAL.Ordens dalCli = new Camadas.DAL.Ordens();
+                dalCli.Insert(ordem);
 
-            limparControles();
+                limparControles();
 
-            dgvOrdens.DataSource = "";
-            dgvOrdens.DataSource = dalCli.Select();
+                dgvOrdens.DataSource = "";
+                dgvOrdens.DataSource = dalCli.Select();
+            }
+            catch
+            {
+                MessageBox.Show("Selecione o cliente e digite o equipamento, o defeito, o valor e a situação!");
+            }            
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            Camadas.MODEL.Ordens ordem = new Camadas.MODEL.Ordens();
-            ordem.idOrd = Convert.ToInt32(txtIdOrd.Text);
-            ordem.entrada = Convert.ToDateTime(dtpEntrada.Value);
-            ordem.equipamento = txtEquipamento.Text;
-            ordem.defeito = txtDefeito.Text;
-            ordem.valor = Convert.ToSingle(txtValor.Text);
-            ordem.situacao = Convert.ToInt32(txtSituacao.Text);
-            ordem.clienteID = Convert.ToInt32(txtIdCli.Text);
+            try
+            {
+                Camadas.MODEL.Ordens ordem = new Camadas.MODEL.Ordens();
+                ordem.idOrd = Convert.ToInt32(txtIdOrd.Text);
+                ordem.entrada = Convert.ToDateTime(dtpEntrada.Value);
+                ordem.equipamento = txtEquipamento.Text;
+                ordem.defeito = txtDefeito.Text;
+                ordem.valor = Convert.ToSingle(txtValor.Text);
+                ordem.situacao = Convert.ToInt32(txtSituacao.Text);
+                ordem.clienteID = Convert.ToInt32(txtIdCli.Text);
 
-            Camadas.DAL.Ordens dalCli = new Camadas.DAL.Ordens();
-            dalCli.Update(ordem);
+                Camadas.DAL.Ordens dalCli = new Camadas.DAL.Ordens();
+                dalCli.Update(ordem);
 
-            limparControles();
+                limparControles();
 
-            dgvOrdens.DataSource = "";
-            dgvOrdens.DataSource = dalCli.Select();
+                dgvOrdens.DataSource = "";
+                dgvOrdens.DataSource = dalCli.Select();
+            }
+            catch
+            {
+                MessageBox.Show("Selecione o cliente e digite o equipamento, o defeito, o valor e a situação!");
+            }
+            
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -95,19 +110,7 @@ namespace OrdemServico2020
         {
             this.Close();
         }        
-
-        private void dgvOrdens_DoubleClick(object sender, EventArgs e)
-        {
-            txtIdOrd.Text = dgvOrdens.SelectedRows[0].Cells["idOrd"].Value.ToString();
-            dtpEntrada.Text = dgvOrdens.SelectedRows[0].Cells["entrada"].Value.ToString();
-            txtEquipamento.Text = dgvOrdens.SelectedRows[0].Cells["equipamento"].Value.ToString();
-            txtDefeito.Text = dgvOrdens.SelectedRows[0].Cells["defeito"].Value.ToString();
-            txtValor.Text = dgvOrdens.SelectedRows[0].Cells["valor"].Value.ToString();
-            txtSituacao.Text = dgvOrdens.SelectedRows[0].Cells["situacao"].Value.ToString();
-            txtIdCli.Text = dgvOrdens.SelectedRows[0].Cells["clienteID"].Value.ToString();
-            cmbCliente.Text = dgvOrdens.SelectedRows[0].Cells["nomeCli"].Value.ToString();
-        }
-
+        
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             Camadas.DAL.Ordens dalCli = new Camadas.DAL.Ordens();
@@ -122,12 +125,25 @@ namespace OrdemServico2020
                     dalCli.Delete(id);
                 }
             }
-            else MessageBox.Show("Não há dados para remover!", "Remover", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Informe o número do ID!", "Remover", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             limparControles();
 
             dgvOrdens.DataSource = "";
             dgvOrdens.DataSource = dalCli.Select();
         }
+
+        private void dgvOrdens_DoubleClick(object sender, EventArgs e)
+        {
+            txtIdOrd.Text = dgvOrdens.SelectedRows[0].Cells["idOrd"].Value.ToString();
+            dtpEntrada.Text = dgvOrdens.SelectedRows[0].Cells["entrada"].Value.ToString();
+            txtEquipamento.Text = dgvOrdens.SelectedRows[0].Cells["equipamento"].Value.ToString();
+            txtDefeito.Text = dgvOrdens.SelectedRows[0].Cells["defeito"].Value.ToString();
+            txtValor.Text = dgvOrdens.SelectedRows[0].Cells["valor"].Value.ToString();
+            txtSituacao.Text = dgvOrdens.SelectedRows[0].Cells["situacao"].Value.ToString();
+            txtIdCli.Text = dgvOrdens.SelectedRows[0].Cells["clienteID"].Value.ToString();
+            cmbCliente.Text = dgvOrdens.SelectedRows[0].Cells["nomeCli"].Value.ToString();
+        }
+
     }
 }

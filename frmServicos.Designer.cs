@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLocalizar = new System.Windows.Forms.Button();
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.rdbId = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdOs = new System.Windows.Forms.TextBox();
-            this.btnLocalizar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiltro)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,6 +62,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Localizar Ordem de Serviço";
+            // 
+            // btnLocalizar
+            // 
+            this.btnLocalizar.Image = global::OrdemServico2020.Properties.Resources.android_search_icon_icons_com_50501;
+            this.btnLocalizar.Location = new System.Drawing.Point(251, 98);
+            this.btnLocalizar.Name = "btnLocalizar";
+            this.btnLocalizar.Size = new System.Drawing.Size(75, 69);
+            this.btnLocalizar.TabIndex = 5;
+            this.btnLocalizar.UseVisualStyleBackColor = true;
+            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
             // lblFiltro
             // 
@@ -127,7 +137,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.groupBox2.BackColor = System.Drawing.Color.Gray;
             this.groupBox2.Controls.Add(this.btnConfirmar);
             this.groupBox2.Controls.Add(this.btnSair);
             this.groupBox2.Controls.Add(this.dtpSaida);
@@ -195,21 +205,11 @@
             this.txtIdOs.Size = new System.Drawing.Size(71, 26);
             this.txtIdOs.TabIndex = 6;
             // 
-            // btnLocalizar
-            // 
-            this.btnLocalizar.Image = global::OrdemServico2020.Properties.Resources.android_search_icon_icons_com_50501;
-            this.btnLocalizar.Location = new System.Drawing.Point(251, 98);
-            this.btnLocalizar.Name = "btnLocalizar";
-            this.btnLocalizar.Size = new System.Drawing.Size(75, 69);
-            this.btnLocalizar.TabIndex = 5;
-            this.btnLocalizar.UseVisualStyleBackColor = true;
-            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
-            // 
             // frmServicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(776, 471);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox2);

@@ -43,35 +43,49 @@ namespace OrdemServico2020
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            Camadas.MODEL.Clientes cliente = new Camadas.MODEL.Clientes();
-            cliente.nome = txtNome.Text;
-            cliente.endereco = txtEndereco.Text;
-            cliente.fone = txtFone.Text;
+            if (txtNome.Text != "")
+            {
+                Camadas.MODEL.Clientes cliente = new Camadas.MODEL.Clientes();
+                cliente.nome = txtNome.Text;
+                cliente.endereco = txtEndereco.Text;
+                cliente.fone = txtFone.Text;
 
-            Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
-            dalCli.Insert(cliente);
+                Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
+                dalCli.Insert(cliente);
 
-            limparControles();
+                limparControles();
 
-            dgvClientes.DataSource = "";
-            dgvClientes.DataSource = dalCli.Select();
+                dgvClientes.DataSource = "";
+                dgvClientes.DataSource = dalCli.Select();
+            }
+            else
+            {
+                MessageBox.Show("Digite o nome do cliente!");
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            Camadas.MODEL.Clientes cliente = new Camadas.MODEL.Clientes();
-            cliente.idCli = Convert.ToInt32(txtId.Text);
-            cliente.nome = txtNome.Text;
-            cliente.endereco = txtEndereco.Text;
-            cliente.fone = txtFone.Text;
+            if (txtId.Text != "" && txtNome.Text != "")
+            {
+                Camadas.MODEL.Clientes cliente = new Camadas.MODEL.Clientes();
+                cliente.idCli = Convert.ToInt32(txtId.Text);
+                cliente.nome = txtNome.Text;
+                cliente.endereco = txtEndereco.Text;
+                cliente.fone = txtFone.Text;
 
-            Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
-            dalCli.Update(cliente);
+                Camadas.DAL.Clientes dalCli = new Camadas.DAL.Clientes();
+                dalCli.Update(cliente);
 
-            limparControles();
+                limparControles();
 
-            dgvClientes.DataSource = "";
-            dgvClientes.DataSource = dalCli.Select();
+                dgvClientes.DataSource = "";
+                dgvClientes.DataSource = dalCli.Select();
+            }
+            else
+            {
+                MessageBox.Show("Informe o número do ID e/ou digite o nome do cliente!");
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
