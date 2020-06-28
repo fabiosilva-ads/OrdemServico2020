@@ -24,9 +24,13 @@ namespace OrdemServico2020
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            DialogResult resp = MessageBox.Show("Deseja sair do sistema?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (resp == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
         }
-
+          
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmClientes frmCli = new frmClientes();
@@ -46,6 +50,12 @@ namespace OrdemServico2020
             frmServicos frmSer = new frmServicos();
             frmSer.MdiParent = this;
             frmSer.Show();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSobre frmSb = new frmSobre();
+            frmSb.ShowDialog();
         }
     }
 }

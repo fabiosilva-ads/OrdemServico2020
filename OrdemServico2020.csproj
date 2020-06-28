@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camadas\BLL\Clientes.cs" />
+    <Compile Include="Camadas\BLL\Ordens.cs" />
+    <Compile Include="Camadas\BLL\Servicos.cs" />
     <Compile Include="Camadas\DAL\Clientes.cs" />
     <Compile Include="Camadas\DAL\Conexao.cs" />
     <Compile Include="Camadas\DAL\Ordens.cs" />
@@ -78,6 +81,12 @@
     <Compile Include="frmServicos.Designer.cs">
       <DependentUpon>frmServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobre.Designer.cs">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmClientes.resx">
@@ -92,6 +101,9 @@
     <EmbeddedResource Include="frmServicos.resx">
       <DependentUpon>frmServicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSobre.resx">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -100,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -115,7 +128,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Camadas\BLL\" />
+    <None Include="Resources\open-laptop-computer_icon-icons.com_73474.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview_search_find_locate_1551.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\android-search_icon-icons.com_50501.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

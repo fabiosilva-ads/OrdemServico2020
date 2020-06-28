@@ -77,7 +77,7 @@ namespace OrdemServico2020.Camadas.DAL
         {
             List<MODEL.Clientes> lstClientes = new List<MODEL.Clientes>();
             SqlConnection conexao = new SqlConnection(strCon);
-            string sql = "SELECT * FROM Clientes WHERE (nome LIKE @nome";
+            string sql = "SELECT * FROM Clientes WHERE (nome LIKE @nome)";
             SqlCommand cmd = new SqlCommand(sql, conexao);
             cmd.Parameters.AddWithValue("@nome", "%" + nome.Trim() + "%");
             try

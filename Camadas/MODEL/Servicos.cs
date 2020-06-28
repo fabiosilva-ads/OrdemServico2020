@@ -11,5 +11,7 @@ namespace OrdemServico2020.Camadas.MODEL
         public int idSer { get; set; }        
         public DateTime saida { get; set; }
         public int ordemID { get; set; }
+
+        public string nomeCli { get; set; }
     }
 }

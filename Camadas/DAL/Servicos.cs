@@ -47,6 +47,41 @@ namespace OrdemServico2020.Camadas.DAL
             return lstServicos;
         }
 
+        public List<MODEL.Servicos> SelectById(int id)
+        {
+            List<MODEL.Servicos> lstServicos = new List<MODEL.Servicos>();
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "SELECT * FROM Servicos WHERE idSer=@idSer";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@idSer", id);
+            try
+            {
+                conexao.Open();
+                SqlDataReader dados = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (dados.Read())
+                {
+                    MODEL.Servicos servico = new MODEL.Servicos();
+                    servico.idSer = Convert.ToInt32(dados["idSer"].ToString());
+                    servico.saida = Convert.ToDateTime(dados["saida"].ToString());
+                    servico.ordemID = Convert.ToInt32(dados["servicoID"].ToString());
+
+                    //Camadas.DAL.Ordens dalOrd = new Ordens();
+                    //Camadas.MODEL.Ordens ordem = dalOrd.SelectById(servico.ordemID);
+                    //servico.nomeCli = cliente.nome;
+
+                    lstServicos.Add(servico);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Erro na consulta do Serviço por ID...");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+            return lstServicos;
+        }
         public void Insert(MODEL.Servicos servico)
         {
             SqlConnection conexao = new SqlConnection(strCon);
@@ -85,6 +120,27 @@ namespace OrdemServico2020.Camadas.DAL
             catch
             {
                 Console.WriteLine("Erro na alteração da Ordem de Serviço...");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "DELETE FROM Servicos WHERE idOrd=@idOrd";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@idOrd", id);
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                Console.WriteLine("Erro na exclusão do Serviço...");
             }
             finally
             {

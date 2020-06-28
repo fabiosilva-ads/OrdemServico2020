@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLocalizar = new System.Windows.Forms.Button();
-            this.dgvFiltro = new System.Windows.Forms.DataGridView();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.rdbId = new System.Windows.Forms.RadioButton();
             this.rdbEquipamento = new System.Windows.Forms.RadioButton();
             this.rdbTodos = new System.Windows.Forms.RadioButton();
+            this.dgvFiltro = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -44,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdOs = new System.Windows.Forms.TextBox();
+            this.btnLocalizar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiltro)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -52,7 +51,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnLocalizar);
-            this.groupBox1.Controls.Add(this.btnLimpar);
             this.groupBox1.Controls.Add(this.lblFiltro);
             this.groupBox1.Controls.Add(this.txtFiltro);
             this.groupBox1.Controls.Add(this.rdbId);
@@ -65,48 +63,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Localizar Ordem de Serviço";
             // 
-            // btnLocalizar
-            // 
-            this.btnLocalizar.Location = new System.Drawing.Point(231, 124);
-            this.btnLocalizar.Name = "btnLocalizar";
-            this.btnLocalizar.Size = new System.Drawing.Size(75, 23);
-            this.btnLocalizar.TabIndex = 7;
-            this.btnLocalizar.Text = "&Localizar";
-            this.btnLocalizar.UseVisualStyleBackColor = true;
-            // 
-            // dgvFiltro
-            // 
-            this.dgvFiltro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFiltro.Location = new System.Drawing.Point(25, 273);
-            this.dgvFiltro.Name = "dgvFiltro";
-            this.dgvFiltro.Size = new System.Drawing.Size(725, 183);
-            this.dgvFiltro.TabIndex = 6;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(150, 124);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 5;
-            this.btnLimpar.Text = "&Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            // 
             // lblFiltro
             // 
-            this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(20, 69);
+            this.lblFiltro.Location = new System.Drawing.Point(20, 76);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(35, 13);
+            this.lblFiltro.Size = new System.Drawing.Size(205, 19);
             this.lblFiltro.TabIndex = 4;
-            this.lblFiltro.Text = "label1";
+            this.lblFiltro.Visible = false;
             // 
             // txtFiltro
             // 
             this.txtFiltro.Location = new System.Drawing.Point(23, 98);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(120, 20);
-            this.txtFiltro.TabIndex = 3;
+            this.txtFiltro.Size = new System.Drawing.Size(202, 20);
+            this.txtFiltro.TabIndex = 4;
+            this.txtFiltro.Visible = false;
             // 
             // rdbId
             // 
@@ -118,6 +89,7 @@
             this.rdbId.TabStop = true;
             this.rdbId.Text = "ID";
             this.rdbId.UseVisualStyleBackColor = true;
+            this.rdbId.CheckedChanged += new System.EventHandler(this.rdbId_CheckedChanged);
             // 
             // rdbEquipamento
             // 
@@ -125,10 +97,11 @@
             this.rdbEquipamento.Location = new System.Drawing.Point(174, 35);
             this.rdbEquipamento.Name = "rdbEquipamento";
             this.rdbEquipamento.Size = new System.Drawing.Size(87, 17);
-            this.rdbEquipamento.TabIndex = 1;
+            this.rdbEquipamento.TabIndex = 3;
             this.rdbEquipamento.TabStop = true;
             this.rdbEquipamento.Text = "Equipamento";
             this.rdbEquipamento.UseVisualStyleBackColor = true;
+            this.rdbEquipamento.CheckedChanged += new System.EventHandler(this.rdbEquipamento_CheckedChanged);
             // 
             // rdbTodos
             // 
@@ -136,10 +109,21 @@
             this.rdbTodos.Location = new System.Drawing.Point(23, 35);
             this.rdbTodos.Name = "rdbTodos";
             this.rdbTodos.Size = new System.Drawing.Size(55, 17);
-            this.rdbTodos.TabIndex = 0;
+            this.rdbTodos.TabIndex = 1;
             this.rdbTodos.TabStop = true;
             this.rdbTodos.Text = "Todas";
             this.rdbTodos.UseVisualStyleBackColor = true;
+            this.rdbTodos.CheckedChanged += new System.EventHandler(this.rdbTodos_CheckedChanged);
+            // 
+            // dgvFiltro
+            // 
+            this.dgvFiltro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFiltro.Location = new System.Drawing.Point(25, 273);
+            this.dgvFiltro.Name = "dgvFiltro";
+            this.dgvFiltro.Size = new System.Drawing.Size(725, 183);
+            this.dgvFiltro.TabIndex = 0;
+            this.dgvFiltro.DoubleClick += new System.EventHandler(this.dgvFiltro_DoubleClick);
             // 
             // groupBox2
             // 
@@ -163,16 +147,17 @@
             this.btnConfirmar.Location = new System.Drawing.Point(135, 169);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(98, 28);
-            this.btnConfirmar.TabIndex = 7;
+            this.btnConfirmar.TabIndex = 8;
             this.btnConfirmar.Text = "&Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnSair
             // 
             this.btnSair.Location = new System.Drawing.Point(248, 169);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 28);
-            this.btnSair.TabIndex = 6;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "&Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -183,7 +168,7 @@
             this.dtpSaida.Location = new System.Drawing.Point(51, 121);
             this.dtpSaida.Name = "dtpSaida";
             this.dtpSaida.Size = new System.Drawing.Size(100, 26);
-            this.dtpSaida.TabIndex = 3;
+            this.dtpSaida.TabIndex = 7;
             // 
             // label3
             // 
@@ -208,7 +193,17 @@
             this.txtIdOs.Location = new System.Drawing.Point(51, 58);
             this.txtIdOs.Name = "txtIdOs";
             this.txtIdOs.Size = new System.Drawing.Size(71, 26);
-            this.txtIdOs.TabIndex = 0;
+            this.txtIdOs.TabIndex = 6;
+            // 
+            // btnLocalizar
+            // 
+            this.btnLocalizar.Image = global::OrdemServico2020.Properties.Resources.android_search_icon_icons_com_50501;
+            this.btnLocalizar.Location = new System.Drawing.Point(251, 98);
+            this.btnLocalizar.Name = "btnLocalizar";
+            this.btnLocalizar.Size = new System.Drawing.Size(75, 69);
+            this.btnLocalizar.TabIndex = 5;
+            this.btnLocalizar.UseVisualStyleBackColor = true;
+            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
             // frmServicos
             // 
@@ -240,7 +235,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnLocalizar;
         private System.Windows.Forms.DataGridView dgvFiltro;
-        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.RadioButton rdbId;

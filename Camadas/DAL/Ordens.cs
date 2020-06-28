@@ -72,6 +72,11 @@ namespace OrdemServico2020.Camadas.DAL
                     ordem.valor = Convert.ToSingle(dados["valor"].ToString());
                     ordem.situacao = Convert.ToInt32(dados["situacao"].ToString());
                     ordem.clienteID = Convert.ToInt32(dados["clienteID"].ToString());
+
+                    Camadas.DAL.Clientes dalCli = new Clientes();
+                    Camadas.MODEL.Clientes cliente = dalCli.SelectById(ordem.clienteID);
+                    ordem.nomeCli = cliente.nome;
+
                     lstOrdens.Add(ordem);
                 }
             }
@@ -86,11 +91,11 @@ namespace OrdemServico2020.Camadas.DAL
             return lstOrdens;
         }
 
-        /*public List<MODEL.Ordens> SelectByNome(string equipamento)
+        public List<MODEL.Ordens> SelectByEquipamento(string equipamento)
         {
             List<MODEL.Ordens> lstOrdens = new List<MODEL.Ordens>();
             SqlConnection conexao = new SqlConnection(strCon);
-            string sql = "SELECT * FROM Ordens WHERE (equipamento LIKE @equipamento";
+            string sql = "SELECT * FROM Ordens WHERE (equipamento LIKE @equipamento)";
             SqlCommand cmd = new SqlCommand(sql, conexao);
             cmd.Parameters.AddWithValue("@equipamento", "%" + equipamento.Trim() + "%");
             try
@@ -107,19 +112,24 @@ namespace OrdemServico2020.Camadas.DAL
 					ordem.valor = Convert.ToSingle(dados["valor"].ToString());
 					ordem.situacao = Convert.ToInt32(dados["situacao"].ToString());
 					ordem.clienteID = Convert.ToInt32(dados["clienteID"].ToString());
+
+                    Camadas.DAL.Clientes dalCli = new Clientes();
+                    Camadas.MODEL.Clientes cliente = dalCli.SelectById(ordem.clienteID);
+                    ordem.nomeCli = cliente.nome;
+
                     lstOrdens.Add(ordem);
                 }
             }
             catch
             {
-                Console.WriteLine("Erro na consulta da Ordem por Nome...");
+                Console.WriteLine("Erro na consulta da Ordem por Equipamento...");
             }
             finally
             {
                 conexao.Close();
             }
             return lstOrdens;
-        }*/
+        }
 
         public void Insert(MODEL.Ordens ordem)
         {
